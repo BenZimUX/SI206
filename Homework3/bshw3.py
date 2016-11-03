@@ -16,18 +16,9 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-print
-print (" - ....working......")
-print
-
-
 base_url = 'https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions'
 r = requests.get(base_url)
 soup = BeautifulSoup(r.text, "html.parser")
-# print (soup)
-
-# for student in soup.findall('student'):
-# 	print (student.get('alt', 'No!!'))
 
 findstudent = soup.find_all(text = re.compile('student'))
 empty = []
