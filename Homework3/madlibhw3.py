@@ -17,67 +17,48 @@ from nltk.book import *
 from nltk import bigrams
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import word_tokenize,sent_tokenize
-import random #one of these is printing all the texts, is this ok?
-
-# print("\n\n")
-# print("type of text 2 is ", type(text2))
-# print("Length of ",text2,"is",len(text2))
-# print("Unique tokens in",text2,"are: ",len(set(text2)))
-
-debug = False #True
-
-# get file from user to make mad lib out of
-if debug:
-	print ("Getting information from file madlib_test.txt...\n")
+import random 
+#what is printing all the text at the beginning here?
 
 fname = "austen-sense.txt"
 
 
 f = open(fname, 'r')
-para = f.read()
+para = f.read() #turning the file into a string
 tokens = nltk.word_tokenize(para)
-#print("TOKENS")
-#print(tokens[:151])
+
+print ("\n\n")
+print("TOKENS")
+print(tokens[:151])
+
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+tagged_tokens = tagged_tokens[:151]
 #print("TAGGED TOKENS")
-#print(tagged_tokens[:151])
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:151]:
-		print (tup)
+#print(tagged_tokens)
 
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "ADV": "an adverb"}
-substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.10,"JJ":.10}
+print("\n\n")
 
-def spaced(word):
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "RB": "an adverb"}
+substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.10,"JJ":.10, "RB":.10}
+
+def spaced(word): #puts spaces into each element of final_words, but makes sure there is no space between words and punctuation
 	if word in [",", ".", "?", "!", ":"]:
 		return word
 	else:
-		return " " + word
+		return " " + word 
 
 final_words = []
 
 
 for (word, tag) in tagged_tokens:
-	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
+	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]: #only one of these has to hold
 		final_words.append(spaced(word))
 	else:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
-print ("".join(final_words))
-
-
-# sentences = sent_tokenize(text2)
-# print ("Type of sentences is", type(sentences))
 print("\n\n")
-
-
-
-
-
-
-# for i in sentences:
-# 	print(i)
+print ("***YOUR MADLIB BELOW***")
+print ("".join(final_words))
 
 print("\n\nEND*******")
