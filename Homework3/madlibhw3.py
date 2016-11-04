@@ -13,28 +13,18 @@
 print("START*******")
 
 import nltk 
-from nltk.book import *
-from nltk import bigrams
-from nltk.tokenize import sent_tokenize, word_tokenize
-from nltk import word_tokenize,sent_tokenize
+from nltk.book import text2
 import random 
 #what is printing all the text at the beginning here?
 
-fname = "austen-sense.txt"
 
-
-f = open(fname, 'r')
-para = f.read() #turning the file into a string
-tokens = nltk.word_tokenize(para)
-
+tokens = text2[:151]
 print ("\n\n")
 print("TOKENS")
-print(tokens[:151])
+print(tokens)
 
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-tagged_tokens = tagged_tokens[:151]
-#print("TAGGED TOKENS")
-#print(tagged_tokens)
+tagged_tokens = tagged_tokens[:151] #first 150 tokens only
 
 print("\n\n")
 
