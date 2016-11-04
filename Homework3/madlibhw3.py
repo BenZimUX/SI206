@@ -42,7 +42,7 @@ tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective",
 substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.10,"JJ":.10, "RB":.10}
 
 def spaced(word): #puts spaces into each element of final_words, but makes sure there is no space between words and punctuation
-	if word in [",", ".", "?", "!", ":"]:
+	if word in [",", ".", "?", "!", ":", "[", "]"]:
 		return word
 	else:
 		return " " + word 
