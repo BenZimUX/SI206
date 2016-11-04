@@ -28,3 +28,6 @@ for word in findstudent:
     empty.append(fixed_text)
 
 print(empty)
+
+f = open("index.html", "w")
+f.write(soup.prettify())
