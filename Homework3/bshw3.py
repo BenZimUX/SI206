@@ -20,14 +20,21 @@ base_url = 'https://www.si.umich.edu/programs/bachelor-science-information/bsi-a
 r = requests.get(base_url)
 soup = BeautifulSoup(r.text, "html.parser")
 
+#1)
 findstudent = soup.find_all(text = re.compile('student'))
 empty = []
 for word in findstudent:
-    fixed_text = str(word).replace('student', '“AMAZING student')
+    fixed_text = str(word).replace('student', 'AMAZING student')
     word.replace_with(fixed_text)
     empty.append(fixed_text)
 
-print(empty)
+#2)
+for link in soup.findAll('iframe'):
+	link['src'] = "C:/Users/Ben/Desktop/206/SI206/Homework3/media/pic.jpg"
+
+#3)
+for img in soup.findAll('img'):
+	img ['src'] = "C:/Users/Ben/Desktop/206/SI206/Homework3/media/logo.png"
 
 f = open("index.html", "w")
 f.write(soup.prettify())

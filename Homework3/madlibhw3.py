@@ -10,23 +10,22 @@
 # Deliverables:
 # 1) Print the orginal text (150 tokens)
 # 1) Print the new text
-print("START*******")
+print("***Start***")
 
 import nltk 
 from nltk.book import text2
 import random 
-#what is printing all the text at the beginning here?
 
 
 tokens = text2[:151]
-print ("\n\n")
-print("TOKENS")
+print ("\n")
+print("***First 150 Tokens***")
 print(tokens)
 
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
 tagged_tokens = tagged_tokens[:151] #first 150 tokens only
 
-print("\n\n")
+print("\n")
 
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "RB": "an adverb"}
 substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.10,"JJ":.10, "RB":.10}
@@ -47,8 +46,8 @@ for (word, tag) in tagged_tokens:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
-print("\n\n")
-print ("***YOUR MADLIB BELOW***")
+print ("\n***Your Madlib Below***")
+print("\n")
 print ("".join(final_words))
 
-print("\n\nEND*******")
+print("\n***End***")
