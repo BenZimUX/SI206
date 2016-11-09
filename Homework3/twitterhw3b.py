@@ -29,6 +29,7 @@ api = tweepy.API(auth)
 #Now we can Create Tweets, Delete Tweets, and Find Twitter Users
 public_tweets = api.search('UMSI')
 
+#Creating a count here so we can take the average eventually
 asub = 0
 apol = 0
 count = 0
@@ -40,13 +41,10 @@ for tweet in public_tweets:
 	analysis = TextBlob(tweet.text)
 	subjectivity = analysis.subjectivity
 	polarity = analysis.polarity
-	count += 1
-	asub += subjectivity
-	apol += polarity
+	count += 1 #increases our count by one every time
+	asub += subjectivity #increases our average subjectivity every time
+	apol += polarity #increases our average polarity every time
 
 print('\n')
-print ("Average Subjectivity of the Tweets:", asub/count)
-print ("Average Polarity of the Tweets:", apol/count)
-	
-#to find polarity/subjectivity https://github.com/redsky17/TwitterPersonality
-#python twitter-persona.py [redacted_key] [redacted_secret] "Macklemore" 500 False
+print ("Average Subjectivity of the Tweets:", asub/count) #actually calculating the averages
+print ("Average Polarity of the Tweets:", apol/count) #actually calculating the averages

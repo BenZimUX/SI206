@@ -22,5 +22,5 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 img = "C:/Users/Ben/Desktop/206/SI206/Homework3/media/pic.jpg"
-api.update_with_media(img, status="#UMSI-206 #Proj3")
-print("posted")
+api.update_with_media(img, status="#UMSI-206 #Proj3") #creates a tweet with my image, and gives it a message as well
+print("Your Tweet Has Been Tweeted")

@@ -17,24 +17,24 @@ import re
 from bs4 import BeautifulSoup
 
 base_url = 'https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions'
-r = requests.get(base_url)
-soup = BeautifulSoup(r.text, "html.parser")
+r = requests.get(base_url) #connecting to website and grabbing html code
+soup = BeautifulSoup(r.text, "html.parser") #html code become a readable class
 
 #1)
-findstudent = soup.find_all(text = re.compile('student'))
+findstudent = soup.find_all(text = re.compile('student')) #finds all the places where student exists
 empty = []
 for word in findstudent:
-    fixed_text = str(word).replace('student', 'AMAZING student')
+    fixed_text = str(word).replace('student', 'AMAZING student') #replaces all instances of "student", with "AMAZING student"
     word.replace_with(fixed_text)
     empty.append(fixed_text)
 
 #2)
-for link in soup.findAll('iframe'):
+for link in soup.findAll('iframe'): #replaces all instances of 'iframe', with my own photo
 	link['src'] = "C:/Users/Ben/Desktop/206/SI206/Homework3/media/pic.jpg"
 
 #3)
-for img in soup.findAll('img'):
+for img in soup.findAll('img'):  #replaces all instances of 'img', with the logo photo
 	img ['src'] = "C:/Users/Ben/Desktop/206/SI206/Homework3/media/logo.png"
 
-f = open("index.html", "w")
-f.write(soup.prettify())
+f = open("index.html", "w") 
+f.write(soup.prettify()) #actually writes everything into html

@@ -48,6 +48,6 @@ for (word, tag) in tagged_tokens:
 
 print ("\n***Your Madlib Below***")
 print("\n")
-print ("".join(final_words))
+print ("".join(final_words)) #gives us our completed madlib
 
 print("\n***End***")
